@@ -7,9 +7,10 @@ class Purchase < ApplicationRecord
   validates_presence_of :item_id, :merchant_id, :purchaser_id, :count
 
   def self.import(file)
-    CSV.foreach(file.path, headers: true) do |row|
-      ActiveRecord::Base.transaction do
-        begin
+    ActiveRecord::Base.transaction do
+      begin
+        CSV.foreach(file.path, headers: true) do |row|
+          
           purchaser = Purchaser.find_or_create_by(name: row["purchaser name"])
           item = Item.find_or_create_by(name: row["item description"], price: row["item price"])
           merchant = Merchant.find_or_create_by(name: row["merchant address"], address: row["merchant name"])
