@@ -1,0 +1,16 @@
+
+<h1>Import purchase</h1>
+
+<%= form_tag import_purchases_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>
+
+<hr>
+
+<h1>Total revenue</h1>
+<h2><%= number_to_currency(@total) %></h2>
+
+
+
+
