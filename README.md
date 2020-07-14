@@ -13,6 +13,8 @@ Install RSpec
 rails generate rspec:install
 ```
 
+In application.yml configure with your machine's db username and password.
+
 Create db and migrations
 ```
 rake db:create db:migrate
